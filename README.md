@@ -6,6 +6,7 @@ This repository includes Ansible playbook examples for practicing common automat
 
 * [Task 1: Install httpd package on app01, app02, and app03](./task01)
 * [Task 2: Install apache package on app01, app02, and app03](./task02/)
+* [Task 2: start and enable httpd service on app01, app02, and app03](./task03/)
 
 ## 📁 Repository Structure
 

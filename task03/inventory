@@ -1,0 +1,4 @@
+[webservers]
+app01 ansible_host=10.1.1.1 ansible_user=ansible
+app02 ansible_host=10.1.1.2 ansible_user=ansible
+app03 ansible_host=10.1.1.3 ansible_user=ansible
