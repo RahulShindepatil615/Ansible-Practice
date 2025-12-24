@@ -1,0 +1,16 @@
+# This playbook will install apache2 and enable apache2 service on webservers
+---
+ - name: install httpd server
+   hosts: webservers
+   become: true
+   tasks:
+     - name: Install httpd package
+       yum:
+         name: apache2
+         state: present
+
+     - name: Start and enable httpd service
+       service:
+         name: apache2
+         state: started
+         enabled: yes
