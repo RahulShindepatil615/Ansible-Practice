@@ -1,0 +1,13 @@
+# This playbook will install httpd and enable apache2 service on webservers
+---
+ - name: copy file to webservers
+   hosts: webservers
+   become: true
+   tasks:
+    - name: copy data
+      copy:
+        src: /tmp/index.html
+        dest: /var/www/html/index.html
+        owner: apache
+        group: apache
+        mode: '0644'
