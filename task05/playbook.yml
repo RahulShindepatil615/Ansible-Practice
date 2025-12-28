@@ -1,0 +1,59 @@
+# write a playbook for Create an empty file blog.txt under /opt/sysops/ directory on app server 1. Set some acl properties for this file. Using acl provide read '(r)' permissions to group tony (i.e entity is tony and etype is group). 
+
+---
+- name: Create files under /opt/sysops and set ACLs
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure /opt/sysops directory exists
+      file:
+        path: /opt/sysops
+        state: directory
+        mode: '0755'
+
+    - name: Create blog.txt on app01
+      file:
+        path: /opt/sysops/blog.txt
+        state: touch
+      when: inventory_hostname == "stapp01"
+
+    - name: Set ACL group tony read on blog.txt (app01)
+      acl:
+        path: /opt/sysops/blog.txt
+        entity: tony
+        etype: group
+        permissions: r
+        state: present
+      when: inventory_hostname == "stapp01"
+
+    - name: Create story.txt on app02
+      file:
+        path: /opt/sysops/story.txt
+        state: touch
+      when: inventory_hostname == "stapp02"
+
+    - name: Set ACL user steve read/write on story.txt (app02)
+      acl:
+        path: /opt/sysops/story.txt
+        entity: steve
+        etype: user
+        permissions: rw
+        state: present
+      when: inventory_hostname == "stapp02"
+
+    - name: Create media.txt on app03
+      file:
+        path: /opt/sysops/media.txt
+        state: touch
+      when: inventory_hostname == "stapp03"
+
+    - name: Set ACL group banner read/write on media.txt (app03)
+      acl:
+        path: /opt/sysops/media.txt
+        entity: banner
+        etype: group
+        permissions: rw
+        state: present
+      when: inventory_hostname == "stapp03"
+
+

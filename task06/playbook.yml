@@ -1,0 +1,49 @@
+# the playbook perform below given tasks:
+
+#     Install httpd web server on all app servers, and make sure its service is up and running.
+
+#     Create a file /var/www/html/index.html with content:
+
+# This is a Nautilus sample file, created using Ansible!
+
+#     Using lineinfile Ansible module add some more content in /var/www/html/index.html file. Below is the content:
+
+# Welcome to xFusionCorp Industries!
+
+# Also make sure this new line is added at the top of the file.
+
+#     The /var/www/html/index.html file's user and group owner should be apache on all app servers.
+
+#     The /var/www/html/index.html file's permissions should be 0744 on all app servers.
+
+---
+- name: Install and configure httpd on app servers
+  hosts: all
+  become: true
+  tasks:
+    - name: Install httpd package
+      yum:
+        name: httpd
+        state: present
+    - name: Start and enable httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: Create /var/www/html/index.html with initial content
+      copy:
+        dest: /var/www/html/index.html
+        content: "This is a Nautilus sample file, created using Ansible!\n"
+    - name: Add additional content to /var/www/html/index.html at the top
+      lineinfile:
+        path: /var/www/html/index.html
+        line: "Welcome to xFusionCorp Industries!"
+        insertbefore: BOF
+    - name: Set ownership of /var/www/html/index.html to apache
+      file:
+        path: /var/www/html/index.html
+        owner: apache
+        group: apache
+        mode: '0744'
+
+

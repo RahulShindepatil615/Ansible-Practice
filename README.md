@@ -8,6 +8,8 @@ This repository includes Ansible playbook examples for practicing common automat
 * [Task 2: Install apache package on app01, app02, and app03](./task02/)
 * [Task 3: start and enable httpd service on app01, app02, and app03](./task03/)
 * [Task 4: Copy Data to App Servers using Ansible](./task04/)
+* [Task 5: create folder, file and set ACL using Ansible](./task05/)
+* [Task 6: Ansible Lineinfile Module](./task06/)
 ## 📁 Repository Structure
 
 ```
