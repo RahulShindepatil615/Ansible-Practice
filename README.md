@@ -40,7 +40,7 @@ Each task folder contains:
 2. Navigate to a task folder:
 
    ```bash
-   cd task-1-install-httpd
+   cd task1
    ```
 
 3. Run the playbook:
