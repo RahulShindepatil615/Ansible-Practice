@@ -1,0 +1,29 @@
+---
+ - name: copy blog.txt to webservers
+   hosts: all
+   become: true
+   tasks:
+     - name: Copy blog.txt to /opt/dba directory
+       copy:
+         src: /usr/src/dba/blog.txt
+         dest: /opt/dba
+         owner: tony
+         group: tony
+         mode: '0744' 
+       when: inventory_hostname == "stapp01"
+     - name: Copy story.txt to /opt/dba directory
+       copy:
+         src: /usr/src/dba/story.txt
+         dest: /opt/dba
+         owner: steve
+         group: steve
+         mode: '0744' 
+       when: inventory_hostname == "stapp02"
+     - name: Copy media.txt to /opt/dba directory
+       copy:
+         src: /usr/src/dba/media.txt
+         dest: /opt/dba
+         owner: banner
+         group: banner
+         mode: '0744' 
+       when: inventory_hostname == "stapp03"

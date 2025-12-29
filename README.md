@@ -10,6 +10,7 @@ This repository includes Ansible playbook examples for practicing common automat
 * [Task 4: Copy Data to App Servers using Ansible](./task04/)
 * [Task 5: create folder, file and set ACL using Ansible](./task05/)
 * [Task 6: Ansible Lineinfile Module](./task06/)
+* [Task 6: Ansible conditionals use of when:](./task07/)
 ## 📁 Repository Structure
 
 ```
